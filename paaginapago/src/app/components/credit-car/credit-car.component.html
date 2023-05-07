@@ -1,0 +1,55 @@
+<div class="card-continar">
+    <div class="credit-card-container">
+        <div class="form-container">
+            <form>
+
+                <div class="field-container" id="name-info">
+                    <label for="name">Nombre</label>
+                    <input id="name" type="text" (input)="onInputChange($event, 'inputName');"
+                        (keypress)="validarLetras($event); tamanioEntrada($event, 20)" autocomplete="off">
+                </div>
+                <div class=" field-container" id="number-info">
+                    <label for="cardNumber">Numero de tarjeta</label>
+                    <input id="cardNumber" type="text" ng-pattern="/^[0-9]*$/" inputmode="numeric"
+                        (input)="onInputChange($event, 'inputCardNum')" inputmode="numeric"
+                        (keydown)="validarNumeros($event)" autocomplete="off">
+                </div>
+                <div class=" field-container" id="expiration-info">
+                    <label for="expiration">Fecha de expiracion (mm/yy)</label>
+                    <input id="expiration" type="text" inputmode="numeric"
+                        (input)="onInputChange($event, 'inputExpiration')" (keydown)="agregarSlash($event)"
+                        (keypress)="tamanioEntrada($event, 4)" autocomplete="off">
+                </div>
+                <div class="field-container" id="security-info">
+                    <label for="securityCode">Codigo de seguridad</label>
+                    <input id="securityCode" type="text" pattern="[0-9]*" inputmode="numeric"
+                        (input)="onInputChange($event, 'inputSecurity')" (keydown)="validarNumeros($event)"
+                        (keypress)="tamanioEntrada($event, 2)" autocomplete="off">
+                </div>
+
+            </form>
+        </div>
+        <div class=" credit-card">
+
+            <div class="card">
+                <div class="card-desing">
+                    <img id="chip" src="https://cdn-icons-png.flaticon.com/512/680/680284.png" alt="" srcset="">
+                </div>
+                <div class="card-info">
+                    <div class="card-number">
+                        <p class="placeholder">Numero de tarjeta</p>
+                        <p class="number">{{card}}</p>
+                    </div>
+                    <div class="card-name">
+                        <p class="placeholder">Nombre</p>
+                        <p class="name">{{name}}</p>
+                    </div>
+                    <div class="card-expiration">
+                        <p class="placeholder">Experation</p>
+                        <p class="expiration">{{expiration}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
